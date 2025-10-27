@@ -1,10 +1,9 @@
 #BlueJ class context
 comment0.target=TicketingSystem
-comment0.text=\r\n\ Ticketing\ system\ simulation\ using\ a\ Queue.\r\n\ \r\n\ Objective\:\r\n\ \ -\ Generate\ tickets\ for\ customers\ as\ they\ arrive.\r\n\ \ -\ Process\ (serve)\ tickets\ in\ order.\r\n\ \ -\ Simulate\ random\ arrival\ and\ service\ times.\r\n
-comment1.params=totalTickets
+comment1.params=count
 comment1.target=java.util.Queue\ generateTickets(int)
 comment2.params=queue
-comment2.target=void\ processTickets(java.util.Queue)
+comment2.target=void\ serveTickets(java.util.Queue)
 comment3.params=args
 comment3.target=void\ main(java.lang.String[])
 numComments=4
