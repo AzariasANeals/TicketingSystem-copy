@@ -1,0 +1,112 @@
+1. Inner Ticket Class
+static class Ticket{
+    int ticketNumber;
+    String timestamp;
+    
+    Ticket(int number, String time){ ... }
+    public String toString(){ ... }
+}
+
+
+Time Complexity:
+
+Creating a Ticket object is O(1) (constant time) because it only assigns values to two fields.
+
+Space Complexity:
+
+Each Ticket object stores an int and a String. So, for n tickets, space is O(n).
+
+2. generateTickets Method
+public Queue<Ticket> generateTickets(int count) {
+    Queue<Ticket> ticketQueue = new LinkedList<>();
+    for (int i = 1; i <= count; i++) {
+        String time = java.time.LocalTime.now().toString();
+        ticketQueue.add(new Ticket(i, time));
+    }
+    return ticketQueue;
+}
+
+
+Loop Iteration: Runs count times → O(count)
+
+Ticket Creation: Each ticket creation is O(1), but LocalTime.now().toString() also takes O(1) (constant time, system call negligible here).
+
+Queue Insertion: LinkedList.add() is O(1).
+
+✅ Total Time Complexity:
+
+𝑂
+(
+𝑐
+𝑜
+𝑢
+𝑛
+𝑡
+)
+O(count)
+
+Space Complexity:
+
+Stores count tickets in memory → O(count).
+
+3. serveTickets Method
+public void serveTickets(Queue<Ticket> queue) {
+    while (!queue.isEmpty()) {
+        queue.poll();
+    }
+}
+
+
+Queue Polling: LinkedList.poll() is O(1) per operation.
+
+Loop Runs: queue.size() times → n times if n tickets.
+
+✅ Time Complexity:
+
+𝑂
+(
+𝑛
+)
+O(n)
+
+Space Complexity:
+
+We are only removing elements from the queue, so no additional space is used. Existing queue already occupies O(n) space.
+
+4. main Method
+for (int i=1; i <= 5; i++){
+    String time = java.time.LocalTime.now().toString();
+    Ticket t = new Ticket(i, time);
+    ticketQueue.add(t);
+}
+
+
+This is similar to generateTickets, but fixed at 5 iterations.
+
+Time Complexity: O(5) → O(1) constant
+
+Space Complexity: Stores 5 tickets → O(1) (constant space, doesn’t scale)
+
+while (!ticketQueue.isEmpty()){
+    Ticket current = ticketQueue.poll();
+}
+
+
+Same as serveTickets. Polling 5 tickets → O(1) constant time
+
+Note: The Thread.sleep() calls are runtime delays for simulation and do not affect algorithmic time complexity. They only affect execution time in real-world runtime.
+
+5. Overall Complexity
+Time Complexity
+
+Generating tickets (n tickets): O(n)
+
+Serving tickets (n tickets): O(n)
+
+✅ Total: O(n)
+
+Space Complexity
+
+Queue stores n tickets: O(n)
+
+Each ticket has fixed size → O(n)
